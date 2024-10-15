@@ -12,12 +12,16 @@ import UserAccomodationspage from "./pages/UserAccomodationspage";
 import UserBookinghistorypage from "./pages/UserBookinghistorypage";
 import UserBookingpage from "./pages/UserBookingpage";
 import UserCheckoutpage from "./pages/UserCheckoutpage";
-import Usernav from "./pages/Usernav";
 import UserLoginpage from "./pages/UserLoginpage";
 import UserSignupPage from "./pages/UserSignupPage";
 import UserReviewnRatingpage from "./pages/UserReviewnRatingpage";
 import UserProfilepage from "./pages/UserProfilepage";
 import Landingpagenav from "./pages/Landingpagenav";
+import Layoutpage from "./pages/Layoutpage";
+import Favouritespage from "./pages/Favouritespage";
+import AdminViewAllAccomodations from "./pages/AdminViewAllAccomodations";
+import Footer from "./components/Footer";
+import Contactpage from "./pages/contactpage";
 
 
 function App() {
@@ -29,8 +33,33 @@ function App() {
 <BrowserRouter>
 
 <Routes>
-  <Route></Route>
+<Route path="/" element={<Layoutpage/>}>
+          <Route index element={<Landingpage />} />
+          <Route path="/UserLoginpage" element={<UserLoginpage />} />
+          <Route path="Adminloginpage" element={<Adminloginpage />} />
+          <Route path="UserSignupPage" element={<UserSignupPage />} />
+          <Route path="UserProfilepage" element={<UserProfilepage />} />
+          <Route path="UserAccomodationspage" element={<UserAccomodationspage />} />
+          <Route path="UserBookinghistorypage" element={<UserBookinghistorypage />} />
+          <Route path="UserBookingpage" element={<UserBookingpage />} />
+          <Route path="UserCheckoutpage" element={<UserCheckoutpage />} />
+          <Route path="UserReviewnRatingpage" element={<UserReviewnRatingpage />} />
+          <Route path="AdminRegisterpage" element={<AdminRegisterpage />} />
+          <Route path="Adminprofilepage" element={<Adminprofilepage />} />
+          <Route path="AdminBookingsmanagementpage" element={<AdminBookingsmanagementpage />} />
+          <Route path="AdminBookingsDashboardpage" element={<AdminBookingsDashboardpage />} />
+          <Route path="AdminAddroompage" element={<AdminAddroompage />} />
+          <Route path="Favouritespage" element={<Favouritespage />} />
+          <Route path="AdminViewAllAccomodations" element={<AdminViewAllAccomodations />} />
+          <Route path="Contactpage" element={<Contactpage/>}></Route>
+
+          
+
+        </Route>
 </Routes>
+
+<Footer/>
+
 
 </BrowserRouter>
     </>
