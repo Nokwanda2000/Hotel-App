@@ -2,9 +2,10 @@
 <h1> Hotel-App  </h1>
 <p>This is a hotel app users login or register to book their holiday stay and the admin login or register to add their accomodation, update or modify their updates view the bookings of their guest and adjust as needed.</p>
 ## Run Locally
+
 Clone the project
 ```bash
-  git clone https://github.com/Amniei/Shopping-List.git
+  git clone https:https://github.com/Nokwanda2000/Hotel-App.git
 ```
 
 Go to the project directory
