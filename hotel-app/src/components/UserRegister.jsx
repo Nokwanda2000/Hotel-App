@@ -63,10 +63,10 @@ export default function UserRegister() {
           </button>
           <p className="mt-4 text-sm text-center text-gray-600">
             Already have an account?{' '}
-            <Link></Link>
-            <a href="/login" className="text-blue-600 hover:underline">
+            <Link to='/UserLoginpage'> <a  className="text-blue-600 hover:underline">
               Log in
-            </a>
+            </a></Link>
+           
           </p>
         </form>
       </div>

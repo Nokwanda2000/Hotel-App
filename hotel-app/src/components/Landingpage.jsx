@@ -35,7 +35,7 @@ export default function HotelLandingPage() {
         <div className="container mx-auto px-4 text-center">
           <hr className='bg-blue-700 h-1' />
           <br />
-          <h2 className="text-4xl font-lora font-bold text-gray-900 mb-8 tracking-tight">Why Choose Us</h2>
+          <h2 className="text-2xl font-lora font-bold text-gray-900 mb-8 tracking-tight">Why Choose Us</h2>
           
           <div className="grid md:grid-cols-3 gap-10">
             <div className="p-8 bg-transparent shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300 backdrop-blur-md">
@@ -66,7 +66,7 @@ export default function HotelLandingPage() {
       {/* Testimonials Section */}
       <section className="py-16 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-lora font-bold text-gray-900 mb-8 tracking-tight">What Our Guests Say</h2>
+          <h2 className="text-2xl font-lora font-bold text-gray-900 mb-8 tracking-tight">What Our Guests Say</h2>
           <div className="grid md:grid-cols-2 gap-10">
             <div className="p-8 bg-transparent shadow-lg rounded-lg hover:shadow-xl transition-shadow duration-300 backdrop-blur-md">
               <p className="text-gray-600 text-lg italic">"An unforgettable stay! The service was perfect, and the room was beyond expectations."</p>
@@ -80,7 +80,6 @@ export default function HotelLandingPage() {
         </div>
       </section>
 
-      <Footer />
     </div>
   );
 }

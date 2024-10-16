@@ -6,7 +6,7 @@ export default function UserLoginpage() {
   return (
     <div>
 <UserLogin/>
-<Footer/>
+
     </div>
   )
 }

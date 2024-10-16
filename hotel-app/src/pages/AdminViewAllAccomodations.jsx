@@ -96,7 +96,7 @@ export default function AdminViewAllAccommodations() {
         </table>
       </div>
 
-      <Footer/>
+ 
     </div>
   );
 }

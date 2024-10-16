@@ -1,10 +1,15 @@
 import React from 'react'
+import Favourites from '../components/Favourites'
+import Footer from '../components/Footer'
 
 export default function Favouritespage() {
   return (
-    <div>
-      <h1>Favourites  page</h1>
-
+    <>
+     <Favourites/>
+    <div className='h-screen'>
+   
+    {/* <Footer/> */}
     </div>
+    </>
   )
 }

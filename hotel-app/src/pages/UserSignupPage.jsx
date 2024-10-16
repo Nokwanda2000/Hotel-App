@@ -6,7 +6,7 @@ export default function UserSignupPage() {
   return (
     <div>
       <UserRegister/>
-      <Footer/>
+   
     </div>
   )
 }

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa'; // Importing an icon for profile
 
-export default function Navigation() {
+export default function Navigation({ user }) { // Assume user is passed as a prop
   const [isOpen, setIsOpen] = useState(false); // State to toggle the mobile menu
+  const [profileMenuOpen, setProfileMenuOpen] = useState(false); // Profile dropdown menu state
 
   return (
     <>
@@ -56,13 +58,13 @@ export default function Navigation() {
             </div>
 
             {/* Desktop Menu */}
-            <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+            <div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-end">
               <div className="hidden sm:block">
                 <ul className="flex space-x-4">
                   <li>
                     <Link
                       to="/"
-                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                      className="hover:bg-gray-300 hover:text-gray-900 px-2 py-2 rounded-md text-sm font-medium"
                     >
                       Home
                     </Link>
@@ -70,7 +72,7 @@ export default function Navigation() {
                   <li>
                     <Link
                       to="/UserLoginpage"
-                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-4 rounded-md text-sm font-medium"
                     >
                       User Login
                     </Link>
@@ -115,9 +117,54 @@ export default function Navigation() {
                       Favourites
                     </Link>
                   </li>
+
+                  {/* <li>
+                    <Link
+                      to="/UserCheckoutpage"
+                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      cHECKOUT
+                    </Link>
+                  </li> */}
                 </ul>
               </div>
             </div>
+
+            {/* Profile Section */}
+            {user && (
+              <div className="relative">
+                <button
+                  onClick={() => setProfileMenuOpen(!profileMenuOpen)}
+                  className="flex items-center space-x-2 focus:outline-none"
+                >
+                  <FaUserCircle className="h-6 w-6 text-gray-900" />
+                  <span className="text-sm font-medium">{user.name}</span>
+                </button>
+                {/* Profile Dropdown Menu */}
+                {profileMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1">
+                    <Link
+                      to="/profile"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Your Profile
+                    </Link>
+                    <Link
+                      to="/settings"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Settings
+                    </Link>
+                    <Link
+                      to="/logout"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    >
+                      Logout
+                    </Link>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
 

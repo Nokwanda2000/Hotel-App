@@ -48,8 +48,8 @@ export default function UserLogin() {
         <div className="mt-6 text-center">
           <p className="text-gray-600">
             Don't have an account?{' '}
-            <Link to='./UserSignupPage.jsx'>
-            <a href="/signup" className="text-indigo-600 font-semibold hover:underline">
+            <Link to='/UserSignupPage'>
+            <a  className="text-indigo-600 font-semibold hover:underline">
               Sign Up
             </a>
             </Link>

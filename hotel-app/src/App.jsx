@@ -22,6 +22,7 @@ import Favouritespage from "./pages/Favouritespage";
 import AdminViewAllAccomodations from "./pages/AdminViewAllAccomodations";
 import Footer from "./components/Footer";
 import Contactpage from "./pages/contactpage";
+import Login from "./pages/Login";
 
 
 function App() {
@@ -31,7 +32,7 @@ function App() {
     <>
 
 <BrowserRouter>
-<div className="h-screen">
+<div className="h-screen ">
 <Routes>
 <Route path="/" element={<Layoutpage/>}>
           <Route index element={<Landingpage />} />
@@ -52,16 +53,17 @@ function App() {
           <Route path="Favouritespage" element={<Favouritespage />} />
           <Route path="AdminViewAllAccomodations" element={<AdminViewAllAccomodations />} />
           <Route path="Contactpage" element={<Contactpage/>}></Route>
+          <Route path="Login" element={<Login/>}></Route>
 
           
 
         </Route>
 </Routes>
-
+<Footer/>
 </div>
 
-{/* 
-<Footer/> */}
+
+
 </BrowserRouter>
     </>
   )
