@@ -31,7 +31,7 @@ function App() {
     <>
 
 <BrowserRouter>
-
+<div className="h-screen">
 <Routes>
 <Route path="/" element={<Layoutpage/>}>
           <Route index element={<Landingpage />} />
@@ -58,9 +58,10 @@ function App() {
         </Route>
 </Routes>
 
-<Footer/>
+</div>
 
-
+{/* 
+<Footer/> */}
 </BrowserRouter>
     </>
   )

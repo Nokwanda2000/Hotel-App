@@ -1,9 +1,12 @@
 import React from 'react'
+import UserLogin from '../components/UserLogin'
+import Footer from '../components/Footer'
 
 export default function UserLoginpage() {
   return (
     <div>
-      <h1>User LOGIN</h1>
+<UserLogin/>
+<Footer/>
     </div>
   )
 }

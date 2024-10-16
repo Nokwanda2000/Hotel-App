@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../features/RegisterSlice'; 
+import { Link } from 'react-router-dom';
 
 export default function UserRegister() {
   const [email, setEmail] = useState('');
@@ -22,7 +23,7 @@ export default function UserRegister() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-teal-500">
       <div className="bg-white p-8 rounded-lg shadow-lg w-96">
         <h2 className="text-3xl font-bold text-center text-gray-800 mb-6">Create an Account</h2>
         <form onSubmit={handleSubmit}>
@@ -62,6 +63,7 @@ export default function UserRegister() {
           </button>
           <p className="mt-4 text-sm text-center text-gray-600">
             Already have an account?{' '}
+            <Link></Link>
             <a href="/login" className="text-blue-600 hover:underline">
               Log in
             </a>

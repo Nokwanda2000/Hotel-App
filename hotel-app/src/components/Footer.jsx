@@ -9,16 +9,7 @@ export default function Footer() {
         <div>
           <h6 className="text-white text-lg font-semibold mb-4">Services</h6>
           <ul>
-            <li>
-              <a href="#" className="block hover:text-white transition-colors duration-200">
-                Branding
-              </a>
-            </li>
-            <li>
-              <a href="#" className="block hover:text-white transition-colors duration-200">
-                Design
-              </a>
-            </li>
+          
             <li>
               <a href="#" className="block hover:text-white transition-colors duration-200">
                 Marketing
@@ -84,13 +75,13 @@ export default function Footer() {
         {/* Contact Section */}
         <div>
           <h6 className="text-white text-lg font-semibold mb-4">Contact Us</h6>
-          <p className="mb-2">Email: contact@example.com</p>
+          <p className="mb-2">Email: LuxuryStays@gmail.com</p>
           <p>Phone: +123 456 7890</p>
         </div>
       </div>
 
-      <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm text-gray-500">
-        © 2024 Booked.com. All rights reserved.
+      <div className="mt-8 border-t border-gray-700 pt-4 text-center text-sm text-[white]">
+        © 2024 Luxury Stays.com. All rights reserved.
       </div>
     </footer>
     </div>

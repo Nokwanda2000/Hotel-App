@@ -6,14 +6,14 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="bg-gray-600 text-white">
+      <nav className="bg-transparent text-gray-900">
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
             {/* Mobile menu button */}
             <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-900 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
                 aria-expanded={isOpen ? 'true' : 'false'}
               >
                 <span className="sr-only">Open main menu</span>
@@ -62,7 +62,7 @@ export default function Navigation() {
                   <li>
                     <Link
                       to="/"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                     >
                       Home
                     </Link>
@@ -70,7 +70,7 @@ export default function Navigation() {
                   <li>
                     <Link
                       to="/UserLoginpage"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                     >
                       User Login
                     </Link>
@@ -78,7 +78,7 @@ export default function Navigation() {
                   <li>
                     <Link
                       to="/UserSignupPage"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                     >
                       User SignUp
                     </Link>
@@ -86,7 +86,7 @@ export default function Navigation() {
                   <li>
                     <Link
                       to="/Adminloginpage"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                     >
                       Admin Login
                     </Link>
@@ -94,7 +94,7 @@ export default function Navigation() {
                   <li>
                     <Link
                       to="/AdminRegisterpage"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                     >
                       Admin SignUp
                     </Link>
@@ -102,7 +102,7 @@ export default function Navigation() {
                   <li>
                     <Link
                       to="/UserAccomodationspage"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                     >
                       Accommodations
                     </Link>
@@ -110,7 +110,7 @@ export default function Navigation() {
                   <li>
                     <Link
                       to="/Favouritespage"
-                      className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                     >
                       Favourites
                     </Link>
@@ -128,7 +128,7 @@ export default function Navigation() {
               <li>
                 <Link
                   to="/"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="hover:bg-gray-300 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Home
                 </Link>
@@ -136,7 +136,7 @@ export default function Navigation() {
               <li>
                 <Link
                   to="/UserLoginpage"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="hover:bg-gray-300 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
                 >
                   User Login
                 </Link>
@@ -144,7 +144,7 @@ export default function Navigation() {
               <li>
                 <Link
                   to="/UserSignupPage"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="hover:bg-gray-300 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
                 >
                   User SignUp
                 </Link>
@@ -152,7 +152,7 @@ export default function Navigation() {
               <li>
                 <Link
                   to="/Adminloginpage"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="hover:bg-gray-300 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Admin Login
                 </Link>
@@ -160,7 +160,7 @@ export default function Navigation() {
               <li>
                 <Link
                   to="/AdminRegisterpage"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="hover:bg-gray-300 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Admin SignUp
                 </Link>
@@ -168,7 +168,7 @@ export default function Navigation() {
               <li>
                 <Link
                   to="/UserAccomodationspage"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="hover:bg-gray-300 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Accommodations
                 </Link>
@@ -176,7 +176,7 @@ export default function Navigation() {
               <li>
                 <Link
                   to="/Favouritespage"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                  className="hover:bg-gray-300 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium"
                 >
                   Favourites
                 </Link>
