@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addRoom } from '../features/AdminAddroomSlice';
+import { uploadImagesToStorage } from '../features/storageUtility.jsx'; // Import a utility function for image uploads
 
 export default function AdminAddRoom() {
   const [roomData, setRoomData] = useState({
@@ -7,9 +10,12 @@ export default function AdminAddRoom() {
     price: '',
     capacity: '',
     amenities: '',
-    images: [],
-    location: '', // Added location field
+    images: [], // This will store the files
+    location: '',
   });
+
+  const dispatch = useDispatch();
+  const { status, error } = useSelector((state) => state.room); // Adjust according to your slice name
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,40 +28,58 @@ export default function AdminAddRoom() {
   const handleFileChange = (e) => {
     setRoomData((prev) => ({
       ...prev,
-      images: [...e.target.files], // Get the selected files
+      images: Array.from(e.target.files), // Convert FileList to Array
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Perform form submission logic here
-    const formData = new FormData();
-    for (const key in roomData) {
-      if (key === 'images') {
-        roomData.images.forEach((image) => formData.append('images', image));
-      } else {
-        formData.append(key, roomData[key]);
+    try {
+      // Validate price and capacity
+      if (roomData.price <= 0 || roomData.capacity <= 0) {
+        alert('Price and capacity must be positive numbers.');
+        return;
       }
+
+      // Upload images to Firebase Storage and get the URLs
+      const imageUrls = await uploadImagesToStorage(roomData.images);
+    
+      
+      // Add the image URLs to the room data
+      const newRoomData = {
+        ...roomData,
+        images: imageUrls,
+      };
+
+      // Dispatch the addRoom action
+      await dispatch(addRoom(newRoomData));
+
+      // Reset the form after submission
+      setRoomData({
+        name: '',
+        description: '',
+        price: '',
+        capacity: '',
+        amenities: '',
+        images: [],
+        location: '',
+      });
+    } catch (err) {
+      console.error('Failed to add room:', err);
     }
-
-    console.log('Room Data:', roomData);
-    // Reset form or show success message after submission
-    setRoomData({
-      name: '',
-      description: '',
-      price: '',
-      capacity: '',
-      amenities: '',
-      images: [],
-      location: '', // Reset location field
-    });
   };
-
+console.log(handleSubmit)
   return (
     <div className="max-w-md mx-auto p-4 bg-white shadow-md rounded-md">
       <h1 className="text-xl font-semibold mb-4">Add New Room</h1>
+      
+      {/* Display loading and error messages */}
+      {status === 'loading' && <p>Adding room...</p>}
+      {status === 'failed' && <p className="text-red-500">{error}</p>}
+      
       <form onSubmit={handleSubmit} className="space-y-3">
+        {/* Room Name Field */}
         <div>
           <label className="block mb-1 text-sm" htmlFor="name">Room Name</label>
           <input
@@ -68,6 +92,8 @@ export default function AdminAddRoom() {
             required
           />
         </div>
+        
+        {/* Description Field */}
         <div>
           <label className="block mb-1 text-sm" htmlFor="description">Description</label>
           <textarea
@@ -80,6 +106,8 @@ export default function AdminAddRoom() {
             required
           />
         </div>
+        
+        {/* Price Field */}
         <div>
           <label className="block mb-1 text-sm" htmlFor="price">Price</label>
           <input
@@ -90,8 +118,11 @@ export default function AdminAddRoom() {
             onChange={handleChange}
             className="border rounded-md w-full p-1 text-sm"
             required
+            min="1" // Ensure a minimum value of 1
           />
         </div>
+        
+        {/* Capacity Field */}
         <div>
           <label className="block mb-1 text-sm" htmlFor="capacity">Capacity</label>
           <input
@@ -102,8 +133,11 @@ export default function AdminAddRoom() {
             onChange={handleChange}
             className="border rounded-md w-full p-1 text-sm"
             required
+            min="1" // Ensure a minimum value of 1
           />
         </div>
+        
+        {/* Amenities Field */}
         <div>
           <label className="block mb-1 text-sm" htmlFor="amenities">Amenities</label>
           <input
@@ -116,6 +150,8 @@ export default function AdminAddRoom() {
             placeholder="e.g., Wi-Fi, TV"
           />
         </div>
+        
+        {/* Location Field */}
         <div>
           <label className="block mb-1 text-sm" htmlFor="location">Location</label>
           <input
@@ -129,6 +165,8 @@ export default function AdminAddRoom() {
             required
           />
         </div>
+        
+        {/* Image Upload Field */}
         <div>
           <label className="block mb-1 text-sm" htmlFor="images">Upload Images</label>
           <input
@@ -142,9 +180,29 @@ export default function AdminAddRoom() {
             required
           />
         </div>
+
+        {/* Image Preview */}
+        {roomData.images.length > 0 && (
+          <div className="mt-2">
+            <h3 className="text-sm font-semibold">Image Previews:</h3>
+            <div className="grid grid-cols-2 gap-2 mt-1">
+              {roomData.images.map((file, index) => (
+                <img
+                  key={index}
+                  src={URL.createObjectURL(file)}
+                  alt={`Preview ${index + 1}`}
+                  className="w-full h-20 object-cover rounded-md"
+                />
+              ))}
+            </div>
+          </div>
+        )}
+        
+        {/* Submit Button */}
         <button
           type="submit"
-          className="bg-transparent border border-blue-500 text-blue-500 px-2 py-1 rounded-md hover:bg-blue-500 hover:text-white text-sm"
+          className={`bg-transparent border border-blue-500 text-blue-500 px-2 py-1 rounded-md hover:bg-blue-500 hover:text-white text-sm ${status === 'loading' ? 'opacity-50 cursor-not-allowed' : ''}`}
+          disabled={status === 'loading'} // Disable the button while loading
         >
           Add Room
         </button>

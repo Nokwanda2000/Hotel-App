@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Ensure you have react-router-dom installed for navigation
+import { Link } from 'react-router-dom';
+import { loginSuccess, loginFailure } from '../features/AdminLoginSlice';
+import { useDispatch } from 'react-redux';
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Add your authentication logic here (e.g., API call)
-    console.log('Email:', email);
-    console.log('Password:', password);
-  };
+    setError('');
+    
+    try {
+        const { user, adminData } = await AdminAPI.login(email, password);
+        dispatch(loginSuccess(user)); // Dispatch the login success action
+        navigate('/admin-dashboard');
+    } catch (error) {
+        setError(error.message);
+        dispatch(loginFailure(error.message)); // Dispatch the login failure action
+    }
+};
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 to-teal-500">
