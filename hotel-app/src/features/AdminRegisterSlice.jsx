@@ -1,12 +1,12 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { userAPI } from './UserAPI'; 
+import AdminAPI from './AdminAPI'
 
-// Create the async thunk for user registration
-export const registerUser = createAsyncThunk(
-  'register/registerUser',
+// Create the async thunk for admin registration
+export const registerAdmin = createAsyncThunk(
+  'register/registerAdmin',
   async (userData, thunkAPI) => {
-    const response = await userAPI.register(userData);
+    const response = await AdminAPI.register(userData);
     return response.data; 
   }
 );
@@ -18,20 +18,20 @@ const initialState = {
 };
 
 // Create the slice
-const registerSlice = createSlice({
+const AdminregisterSlice = createSlice({
   name: 'register',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(registerUser.pending, (state) => {
+      .addCase(registerAdmin.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(registerUser.fulfilled, (state, action) => {
+      .addCase(registerAdmin.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.user = action.payload; // Store user data if needed
       })
-      .addCase(registerUser.rejected, (state, action) => {
+      .addCase(registerAdmin.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
       });
@@ -39,5 +39,5 @@ const registerSlice = createSlice({
 });
 
 // Export the async thunk and the reducer
-// export { registerUser };
-export default registerSlice.reducer; 
+
+export default AdminregisterSlice.reducer; 

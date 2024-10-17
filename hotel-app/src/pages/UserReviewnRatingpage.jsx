@@ -1,10 +1,10 @@
 import React from 'react'
+import ReviewnRating from '../components/ReviewnRating'
 
 export default function UserReviewnRatingpage() {
   return (
     <div>
-      <h1> Review and Rating Page</h1>
-
+      <ReviewnRating/>
     </div>
   )
 }

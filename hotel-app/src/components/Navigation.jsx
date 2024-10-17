@@ -8,7 +8,10 @@ export default function Navigation({ user }) { // Assume user is passed as a pro
 
   return (
     <>
-      <nav className="bg-transparent text-gray-900">
+      <nav 
+        className="bg-transparent text-gray-900" 
+        style={{ backgroundAttachment: 'fixed' }} // This makes the background stay in place
+      >
         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
           <div className="relative flex items-center justify-between h-16">
             {/* Mobile menu button */}
@@ -117,15 +120,6 @@ export default function Navigation({ user }) { // Assume user is passed as a pro
                       Favourites
                     </Link>
                   </li>
-
-                  {/* <li>
-                    <Link
-                      to="/UserCheckoutpage"
-                      className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      cHECKOUT
-                    </Link>
-                  </li> */}
                 </ul>
               </div>
             </div>

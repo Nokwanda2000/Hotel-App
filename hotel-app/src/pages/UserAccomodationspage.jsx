@@ -1,9 +1,10 @@
 import React from 'react'
+import UserAccomodation from '../components/UserAccomodation'
 
 export default function UserAccomodationspage() {
   return (
     <div>
-      <h1>User Accomodations page</h1>
+  <UserAccomodation />
     </div>
   )
 }

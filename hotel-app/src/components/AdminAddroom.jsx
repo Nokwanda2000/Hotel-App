@@ -8,6 +8,7 @@ export default function AdminAddRoom() {
     capacity: '',
     amenities: '',
     images: [],
+    location: '', // Added location field
   });
 
   const handleChange = (e) => {
@@ -47,6 +48,7 @@ export default function AdminAddRoom() {
       capacity: '',
       amenities: '',
       images: [],
+      location: '', // Reset location field
     });
   };
 
@@ -112,6 +114,19 @@ export default function AdminAddRoom() {
             onChange={handleChange}
             className="border rounded-md w-full p-1 text-sm"
             placeholder="e.g., Wi-Fi, TV"
+          />
+        </div>
+        <div>
+          <label className="block mb-1 text-sm" htmlFor="location">Location</label>
+          <input
+            type="text"
+            id="location"
+            name="location"
+            value={roomData.location}
+            onChange={handleChange}
+            className="border rounded-md w-full p-1 text-sm"
+            placeholder="Enter the location"
+            required
           />
         </div>
         <div>

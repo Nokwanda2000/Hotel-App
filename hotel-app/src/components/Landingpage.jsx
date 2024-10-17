@@ -4,6 +4,7 @@ import Footer from './Footer';
 import Image2 from '../assets/meklay-yotkhamsay-AAZaK31x6FM-unsplash.jpg';
 import Image3 from '../assets/farhad-ibrahimzade-vxPtIlRwq2g-unsplash.jpg';
 import Image4 from '../assets/cauayan-island-resort-JNoJ-eisUuY-unsplash.jpg';
+import { Link } from 'react-router-dom';
 
 export default function HotelLandingPage() {
   return (
@@ -15,18 +16,23 @@ export default function HotelLandingPage() {
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <div className="relative z-10 text-center text-white flex flex-col justify-center items-center h-full px-4">
-          <h1 className="text-5xl md:text-5xl font-lora font-bold tracking-tight hover:text-blue-300">
+          <h1 className="text-5xl md:text-5xl font-lora font-bold tracking-tight hover:text-blue-600">
             Welcome to Luxury Stays
           </h1>
-          <p className="mt-6 text-lg md:text-2xl max-w-2xl tracking-wide font-light leading-relaxed">
+          <p className="mt-6 text-l md:text-2xl max-w-2xl tracking-wide font-light leading-relaxed">
             Discover the ultimate in comfort and elegance. Indulge in a luxurious experience with us.
           </p>
+          <br></br>
+          <Link to='/UserAccomodationspage'>
           <a 
-            href="#rooms" 
+            
             className="mt-8 px-10 py-3 bg-transparent border rounded-full font-semibold hover:to-blue-600 hover:text-white transition-all duration-300 ease-in-out"
           >
             Book Now
           </a>
+          
+          </Link>
+         
         </div>
       </section>
 
