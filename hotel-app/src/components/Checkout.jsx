@@ -1,4 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { CardElement, Elements } from '@stripe/react-stripe-js';
+
+// Replace with your actual publishable key from Stripe
+const stripePromise = loadStripe('YOUR_STRIPE_PUBLISHABLE_KEY');
 
 export default function Checkout() {
   const [userInfo, setUserInfo] = useState({
@@ -9,7 +14,6 @@ export default function Checkout() {
     checkOutDate: '',
     numberOfGuests: 1,
     roomType: 'standard',
-    paymentMethod: 'creditCard',
   });
 
   const handleChange = (e) => {
@@ -20,10 +24,45 @@ export default function Checkout() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle the checkout logic here, e.g., API call
-    console.log('Checkout Info:', userInfo);
+    
+    const stripe = await stripePromise;
+
+    // For demo purposes, you would typically send userInfo to your server to create a PaymentIntent
+    const response = await fetch('/api/create-payment-intent', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        amount: 5000, // Replace with the total amount (in cents)
+        currency: 'usd',
+      }),
+    });
+
+    const paymentIntent = await response.json();
+
+    // Confirm card payment
+    const { error } = await stripe.confirmCardPayment(paymentIntent.clientSecret, {
+      payment_method: {
+        card: cardElement, // Reference to the Stripe card element
+        billing_details: {
+          name: userInfo.name,
+          email: userInfo.email,
+          address: {
+            line1: userInfo.address,
+          },
+        },
+      },
+    });
+
+    if (error) {
+      console.error('Payment error:', error);
+    } else {
+      console.log('Payment successful:', paymentIntent);
+      // Handle successful payment (e.g., redirect to a success page)
+    }
   };
 
   return (
@@ -117,20 +156,13 @@ export default function Checkout() {
             <option value="suite">Suite</option>
           </select>
         </div>
+        {/* Card Element for Stripe */}
         <div>
-          <label className="block mb-1 text-xs" htmlFor="paymentMethod">Payment Method</label>
-          <select
-            id="paymentMethod"
-            name="paymentMethod"
-            value={userInfo.paymentMethod}
-            onChange={handleChange}
-            className="border rounded-lg w-full p-1 text-xs"
-          >
-            <option value="creditCard">Credit Card</option>
-            <option value="paypal">PayPal</option>
-            <option value="bankTransfer">Bank Transfer</option>
-          </select>
+          <label className="block mb-1 text-xs">Card Details</label>
+          <CardElement />
+          <div id="card-errors" role="alert"></div>
         </div>
+
         <button
           type="submit"
           className="bg-blue-500 text-white px-2 py-1 rounded-lg hover:bg-blue-600 text-xs transition duration-200"

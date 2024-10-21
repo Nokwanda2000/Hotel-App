@@ -1,4 +1,4 @@
-// roomSlice.js
+
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { db } from '../firebaseConfig';
 import { collection, addDoc, getDocs } from 'firebase/firestore';

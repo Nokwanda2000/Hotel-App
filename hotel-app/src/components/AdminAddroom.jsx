@@ -64,6 +64,7 @@ export default function AdminAddRoom() {
         amenities: '',
         images: [],
         location: '',
+        roomType:''
       });
     } catch (err) {
       console.error('Failed to add room:', err);
@@ -150,6 +151,16 @@ console.log(handleSubmit)
             placeholder="e.g., Wi-Fi, TV"
           />
         </div>
+
+        {/*RoomType fiels*/}
+
+        <div>
+            <label className="block mb-1 text-sm" htmlFor="roomType">Room Type</label>
+            <select id="roomType" name="roomType" value={roomData.roomType}
+            onChange={handleChange} className="border rounded-md w-full p-1 text-sm"></select>
+            
+            
+        </div>
         
         {/* Location Field */}
         <div>
@@ -176,7 +187,7 @@ console.log(handleSubmit)
             accept="image/*"
             onChange={handleFileChange}
             className="border rounded-md w-full p-1 text-sm"
-            multiple // Allow multiple file uploads
+            multiple 
             required
           />
         </div>
