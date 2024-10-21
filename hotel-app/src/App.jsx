@@ -23,6 +23,7 @@ import AdminViewAllAccomodations from "./pages/AdminViewAllAccomodations";
 import Footer from "./components/Footer";
 import Contactpage from "./pages/contactpage";
 import Login from "./pages/Login";
+import UserBooking from "./components/Userbooking";
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
           <Route path="AdminViewAllAccomodations" element={<AdminViewAllAccomodations />} />
           <Route path="Contactpage" element={<Contactpage/>}></Route>
           <Route path="Login" element={<Login/>}></Route>
+          <Route path="UserBooking" element={<UserBooking/>}></Route>
 
           
 

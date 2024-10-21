@@ -20,16 +20,16 @@ export default function UserLogin() {
       return;
     }
 
-    
+
 
     // Dispatch the loginUser action with email and password
     const resultAction = await dispatch(loginUser({ email, password }));
     
-    // If the login was successful, navigate to another page (e.g., dashboard)
+    // If the login was successful, navigate to another page 
     if (loginUser.fulfilled.match(resultAction)) {
-      navigate('/dashboard'); // Replace with your desired route
+      navigate('/dashboard'); 
     } else {
-      // Optionally, display an alert for errors
+      
       alert(error || 'Login failed. Please check your credentials.');
     }
   };
@@ -37,7 +37,7 @@ export default function UserLogin() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-teal-500">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full border border-gray-200">
-        <h2 className="text-3xl font-sans text-center text-blue-900 mb-6">
+        <h2 className="text-3l font-sans text-center text-blue-900 mb-6">
           Welcome, please sign in using your details
         </h2>
         

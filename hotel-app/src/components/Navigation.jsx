@@ -80,14 +80,14 @@ export default function Navigation({ user }) { // Assume user is passed as a pro
                       User Login
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       to="/UserSignupPage"
                       className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                     >
                       User SignUp
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       to="/Adminloginpage"
@@ -96,14 +96,14 @@ export default function Navigation({ user }) { // Assume user is passed as a pro
                       Admin Login
                     </Link>
                   </li>
-                  <li>
+                  {/* <li>
                     <Link
                       to="/AdminRegisterpage"
                       className="hover:bg-gray-300 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                     >
                       Admin SignUp
                     </Link>
-                  </li>
+                  </li> */}
                   <li>
                     <Link
                       to="/UserAccomodationspage"
