@@ -1,9 +1,9 @@
 import { auth } from '../firebaseConfig'; 
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { db } from '../firebaseConfig'; // Import Firestore
-import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
+import { doc, setDoc } from 'firebase/firestore';
 
-// User API for handling registration
+// User API for handling registration and login
 export const AdminAPI = {
     register: async (adminData) => {
         const { email, password, fullName, country, address } = adminData;
@@ -44,7 +44,35 @@ export const AdminAPI = {
         }
     },
 
-    // Additional functions can be added here
+    login: async (credentials) => {
+        const { email, password } = credentials;
+
+        try {
+            // Sign in the user with Firebase Authentication
+            const adminCredential = await signInWithEmailAndPassword(auth, email, password);
+            const user = adminCredential.user; // Get the user object
+
+            return user; // Return the logged-in user object
+        } catch (error) {
+            let errorMessage;
+
+            switch (error.code) {
+                case 'auth/user-not-found':
+                    errorMessage = 'No user found with this email. Please register first.';
+                    break;
+                case 'auth/wrong-password':
+                    errorMessage = 'Incorrect password. Please try again.';
+                    break;
+                case 'auth/invalid-email':
+                    errorMessage = 'The email address is not valid.';
+                    break;
+                default:
+                    errorMessage = 'An error occurred. Please try again.';
+            }
+
+            throw new Error(errorMessage); // Throw an error with a custom message
+        }
+    },
 };
 
-export default AdminAPI; // Default export for compatibility
+export default AdminAPI;

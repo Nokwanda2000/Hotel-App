@@ -4,13 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 export default function UserBooking() {
   const location = useLocation();
-  const history = useNavigate();
+  const navigate = useNavigate();
   const property = location.state?.property; // Access passed property data
 
   // Function to handle booking confirmation and navigate to the checkout page
   const handleBookingConfirmation = () => {
     // Navigate to the checkout page immediately when "Book" is clicked
-    history('/UserCheckoutpage');
+    navigate('/UserCheckoutpage', { state: { accommodationId: property.id } });
   };
 
   return (

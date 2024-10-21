@@ -25,11 +25,11 @@ export default function UserLogin() {
     // Dispatch the loginUser action with email and password
     const resultAction = await dispatch(loginUser({ email, password }));
     
-    // If the login was successful, navigate to another page (e.g., dashboard)
+    // If the login was successful, navigate to another page 
     if (loginUser.fulfilled.match(resultAction)) {
-      navigate('/dashboard'); // Replace with your desired route
+      navigate('/dashboard'); 
     } else {
-      // Optionally, display an alert for errors
+      
       alert(error || 'Login failed. Please check your credentials.');
     }
   };
